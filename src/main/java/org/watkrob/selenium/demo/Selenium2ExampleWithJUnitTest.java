@@ -10,6 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+//This example requires JUnit, while others use TestNG.
+//The POM would need to be updated to satisfy this dependency
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
