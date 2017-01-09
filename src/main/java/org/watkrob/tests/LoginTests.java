@@ -22,7 +22,7 @@ public class LoginTests {
 
     @BeforeSuite
     public void setup() {
-        System.out.println("Starting Before Class");
+        System.out.println("Starting Before Suite");
         driver = new FirefoxDriver();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -47,5 +47,16 @@ public class LoginTests {
         signInPage = mainPage.clickSignIn();
         Assert.assertTrue(null != signInPage);
 
+    }
+
+    @Test
+    public void LoginLogoutTest(){
+        System.out.println("Starting LoginLogoutTest");
+        mainPage = new MainPage(driver);
+        signInPage = mainPage.clickSignIn();
+        Assert.assertTrue(null != signInPage);
+        mainPage = signInPage.LoginWithValidCredentials("tuser","tuser");
+        String helloUserTextFound = mainPage.GetHelloUserText();
+        Assert.assertEquals("Hello Test User", helloUserTextFound,"Expected 'Hello Test User', got '" + helloUserTextFound + "'");
     }
 }
