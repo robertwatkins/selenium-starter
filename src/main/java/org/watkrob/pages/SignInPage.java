@@ -6,6 +6,7 @@ package org.watkrob.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.watkrob.utils.ErrorHandling;
 
 public class SignInPage extends PageBase {
 
@@ -13,7 +14,7 @@ public class SignInPage extends PageBase {
     private By passwordField = By.id("passw");
     private By submitButton = By.name("btnSubmit");
 
-    public SignInPage(WebDriver driver){
+    SignInPage(WebDriver driver){
         this.driver = driver;
     }
 
@@ -23,7 +24,7 @@ public class SignInPage extends PageBase {
         driver.findElement(passwordField).clear();
         driver.findElement(passwordField).sendKeys(password);
         driver.findElement(submitButton).click();
-
+        ErrorHandling.logMessage("Logging in with user '"+username+"' (password not shown)");
         waitForPageLoaded();
         return new MainPage(driver);
     }

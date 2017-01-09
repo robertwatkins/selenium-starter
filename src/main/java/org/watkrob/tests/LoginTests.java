@@ -55,8 +55,12 @@ public class LoginTests {
         mainPage = new MainPage(driver);
         signInPage = mainPage.clickSignIn();
         Assert.assertTrue(null != signInPage);
+
         mainPage = signInPage.LoginWithValidCredentials("tuser","tuser");
         String helloUserTextFound = mainPage.GetHelloUserText();
         Assert.assertEquals("Hello Test User", helloUserTextFound,"Expected 'Hello Test User', got '" + helloUserTextFound + "'");
+
+        mainPage.clickSignOff();
+        Assert.assertFalse(mainPage.isUserLoggedIn(),"Expected User to be Logged Out, but found that the user was still logged in");
     }
 }

@@ -9,11 +9,11 @@ import org.testng.Assert;
 /**
  * Created by robertwatkins on 1/8/17.
  */
-public class PageBase {
+class PageBase {
 
-    public WebDriver driver;
+    WebDriver driver;
 
-    public void waitForPageLoaded() {
+    void waitForPageLoaded() {
         ExpectedCondition<Boolean> expectation = new
                 ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver driver) {

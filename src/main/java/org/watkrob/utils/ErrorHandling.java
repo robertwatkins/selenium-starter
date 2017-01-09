@@ -8,9 +8,12 @@ public final class ErrorHandling {
     private ErrorHandling() {
     }
 
-    public static String throwNPE(String msg) {
+    public static void throwNPE(String msg) {
         System.out.println(msg);
-        NullPointerException e = new NullPointerException();
-        throw e;
+        throw new NullPointerException();
+    }
+
+    public static void logMessage(String msg) {
+        System.out.println(msg);
     }
 }
