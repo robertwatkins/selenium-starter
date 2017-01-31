@@ -43,7 +43,7 @@ public class Tests {
         String driverType = defaultProps.getProperty("drivertype");
         System.out.println("Driver Type: "+driverType);
         if (null == driverType) {
-            ErrorHandling.throwNPE("Driver type is '"+driverType+"'");
+            ErrorHandling.throwNPE("Driver type is 'null'");
         } else if (driverType.equals("Firefox")) {
             driver = new FirefoxDriver();
         } else if (driverType.equals("HTMLUnit")){
