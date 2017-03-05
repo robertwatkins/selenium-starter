@@ -5,6 +5,7 @@
             <class name="org.watkrob.tests.LoginTests">
                 <methods>
                     <include name="LoginTest"/>
+                    <include name="LoginLogoutTest"/>
                 </methods>
             </class>
         </classes>

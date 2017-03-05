@@ -2,11 +2,12 @@ package org.watkrob.pages;
 
 /**
  * Created by robertwatkins on 1/7/17.
+ *
  */
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.watkrob.utils.ErrorHandling;
+import org.testng.Reporter;
 
 public class SignInPage extends PageBase {
 
@@ -24,7 +25,7 @@ public class SignInPage extends PageBase {
         driver.findElement(passwordField).clear();
         driver.findElement(passwordField).sendKeys(password);
         driver.findElement(submitButton).click();
-        ErrorHandling.logMessage("Logging in with user '"+username+"' (password not shown)");
+        Reporter.log("Logging in with user '"+username+"' (password not shown)",true);
         waitForPageLoaded();
         return new MainPage(driver);
     }
