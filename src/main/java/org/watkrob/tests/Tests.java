@@ -3,6 +3,7 @@ package org.watkrob.tests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.watkrob.pages.MainPage;
@@ -27,22 +28,22 @@ public class Tests {
 
     @BeforeSuite
     public void setup() {
-        System.out.println("Starting Before Suite");
+        Reporter.log("Starting Before Suite");
 
-        System.out.println("Read Configs");
+        Reporter.log("Read Configs");
         Properties defaultProps = new Properties();
         File configFile = new File("config.xml");
         try {
             InputStream inputStream = new FileInputStream(configFile);
             defaultProps.loadFromXML(inputStream);
         } catch (Exception e1) {
-            System.out.println("Unable to find or parse 'config.xml' file.");
+            Reporter.log("Unable to find or parse 'config.xml' file.");
             e1.printStackTrace();
         }
 
 
         String driverType = defaultProps.getProperty("drivertype");
-        System.out.println("Driver Type: "+driverType);
+        Reporter.log("Driver Type: "+driverType);
         if (null == driverType) {
             ErrorHandling.throwNPE("Driver type is 'null'");
         } else if (driverType.equals("Firefox")) {
@@ -56,14 +57,14 @@ public class Tests {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         driver.get("http://demo.testfire.net/");
-        System.out.println("Launched Site");
+        Reporter.log("Launched Site",true);
 
     }
 
     @AfterSuite
     public void teardown(){
 
-        System.out.println("End of Test.");
+        Reporter.log("End of Test.");
         driver.quit();
 
     }
